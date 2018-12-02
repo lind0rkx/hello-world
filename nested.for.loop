@@ -1,0 +1,33 @@
+//PSEUDOCODE FOR "NESTED FOR LOOP" CHALLENGE
+//grab the spreadsheet
+//initialize the list of vowels
+//find out how many rows of data I have
+//find out how many columns of data I have
+//for each row
+  //for each column
+    //I have access to row, col number
+//I want to get the value of the cell in the (row,col)
+//check if that value exists in the vowel list
+//if yes--> change the background of the cell to blue
+//if not--> do nothing
+//I am done when I have reached the last column of the last row
+
+function myFunction() {
+  
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var vowels = 'aeiou'
+  var sheet = ss.getSheets()[0];
+  var range = sheet.getRange("A1:C3");
+  var numberOfColumns = range.getNumColumns()
+  var numberOfRows = range.getNumRows()
+  for (var rowIdx = 1; rowIdx <= numberOfRows; rowIdx++) {
+    for (var colIdx = 1; colIdx <= numberOfColumns; colIdx++) {
+         var cell = range.getCell(rowIdx, colIdx)
+         Logger.log(cell.getValue()) ;
+      if (vowels.indexOf(cell.getValue())) {
+             cell.setBackground('blue')
+         }
+       
+    }
+  }
+}
